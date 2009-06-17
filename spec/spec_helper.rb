@@ -9,7 +9,7 @@ require 'rack-roll'
 
 Spec::Runner.configure do |config|
   def app
-    @app = Rack::Builder.new do
+    @app ||= Rack::Builder.new do
       use Rack::Roll
       run lambda { |env| [200, env.merge({ 'Content-Type' => 'text/plain' }), 'Word' ] }
     end
